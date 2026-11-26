@@ -1,0 +1,13 @@
+{
+  "name": "Game Hub",
+  "short_name": "Game Hub",
+  "description": "خمسون تحدياً تفاعلياً ممتعاً",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10111d",
+  "theme_color": "#10111d",
+  "icons": [
+    { "src": "./games.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

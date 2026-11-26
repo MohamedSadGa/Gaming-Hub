@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="خصص ألوان Game Hub واحفظ مظهرك المفضل.">
+  <meta property="og:title" content="تخصيص المظهر — Game Hub">
+  <meta property="og:description" content="خصص ألوان Game Hub واحفظ مظهرك المفضل.">
+  <meta property="og:type" content="website">
+  <title>تخصيص المظهر — Game Hub</title>
+  <link rel="icon" href="./games.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Press+Start+2P&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="./index.html"><img src="./games.png" alt="" width="42" height="42" data-icon-slot="brand"><span><strong>GAME HUB</strong><small data-i18n="brandTag">مساحتك للعب والتحدّي</small></span></a>
+      <nav class="top-links"><a href="./index.html" data-i18n="home">الرئيسية</a><a href="./hdr.html" data-i18n="hdrPageLink">تجربة HDR</a></nav>
+      <button class="language-toggle" type="button" data-language-toggle>EN</button>
+    </header>
+    <main class="info-page">
+      <section class="info-card appearance-wizard">
+        <p class="eyebrow" data-i18n="appearanceWizardEyebrow">معالج تخصيص المظهر</p>
+        <h1 data-i18n="appearanceWizardTitle">اختر ألوان عالمك</h1>
+        <p data-i18n="appearanceWizardIntro">عدّل الألوان خطوة بخطوة؛ يظهر التغيير فوراً، ثم احفظه على هذا الجهاز.</p>
+        <div class="wizard-progress" aria-label="Progress"><span class="active"></span><span></span><span></span></div>
+        <section class="wizard-step">
+          <h2 data-i18n="appearanceStepOne">ألوان الخلفية والبطاقات</h2>
+          <p data-i18n="appearanceStepOneHint">ابدأ باختيار لون الصفحة والسطوح الرئيسية.</p>
+          <div class="wizard-colors">
+            <label class="wizard-color"><span data-i18n="colorBackground">خلفية الموقع</span><input type="color" data-palette="background" value="#10111d"></label>
+            <label class="wizard-color"><span data-i18n="colorPanel">البطاقات والنوافذ</span><input type="color" data-palette="panel" value="#181a29"></label>
+          </div>
+        </section>
+        <section class="wizard-step" hidden>
+          <h2 data-i18n="appearanceStepTwo">ألوان النصوص</h2>
+          <p data-i18n="appearanceStepTwoHint">حافظ على تباين واضح لسهولة القراءة.</p>
+          <div class="wizard-colors">
+            <label class="wizard-color"><span data-i18n="colorText">النص الأساسي</span><input type="color" data-palette="text" value="#f7f5ff"></label>
+            <label class="wizard-color"><span data-i18n="colorMuted">النص الثانوي</span><input type="color" data-palette="muted" value="#9a9bb0"></label>
+          </div>
+        </section>
+        <section class="wizard-step" hidden>
+          <h2 data-i18n="appearanceStepThree">ألوان الهوية والمعاينة</h2>
+          <p data-i18n="appearanceStepThreeHint">هذه الألوان تظهر في الأزرار واللمسات المضيئة.</p>
+          <div class="wizard-colors">
+            <label class="wizard-color"><span data-i18n="colorAccent">اللون الرئيسي</span><input type="color" data-palette="accent" value="#76f0c4"></label>
+            <label class="wizard-color"><span data-i18n="colorSecondary">اللون الثانوي</span><input type="color" data-palette="secondary" value="#a78bfa"></label>
+          </div>
+          <div class="wizard-preview"><strong data-i18n="appearancePreviewTitle">معاينة مظهرك</strong><span data-i18n="appearancePreviewText">هكذا ستبدو الألوان في Game Hub</span></div>
+        </section>
+        <div class="wizard-actions">
+          <button id="appearance-back" class="button button-quiet" type="button" data-i18n="appearancePrevious" hidden>السابق</button>
+          <span></span>
+          <button id="appearance-next" class="button button-primary" type="button" data-i18n="appearanceNext">التالي</button>
+          <button id="appearance-save" class="button button-primary" type="button" data-i18n="appearanceSave" hidden>حفظ المظهر</button>
+        </div>
+        <p id="appearance-status" class="preferences-saved" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <footer class="footer"><a href="./index.html" data-i18n="home">الرئيسية</a><a href="./contact.html" data-i18n="contact">اتصل بنا</a><a href="./privacy.html" data-i18n="privacy">الخصوصية</a></footer>
+  </div>
+  <script src="./js/storage.js"></script>
+  <script src="./js/i18n.js"></script>
+  <script src="./js/site.js"></script>
+  <script src="./js/appearance.js"></script>
+</body>
+</html>

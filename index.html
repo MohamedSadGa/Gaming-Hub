@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10111d">
+  <meta name="description" content="Game Hub: تحديات سريعة وألعاب ممتعة، احفظ تقدمك واكتشف لعبتك التالية.">
+  <meta property="og:title" content="Game Hub — العب وتحدّ نفسك">
+  <meta property="og:description" content="خمسون تحدياً تفاعلياً، من ألعاب الذاكرة إلى السرعة والتركيز.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./games.png">
+  <title>Game Hub — العب وتحدّ نفسك</title>
+  <link rel="icon" href="./games.png" type="image/png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Press+Start+2P&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="Game Hub">
+        <img src="./games.png" alt="" width="42" height="42" data-icon-slot="brand">
+        <span><strong>GAME HUB</strong><small data-i18n="brandTag">مساحتك للعب والتحدّي</small></span>
+      </a>
+      <nav class="top-links" aria-label="Main navigation">
+        <a href="./about.html" data-i18n="about">من نحن</a>
+        <a href="./contact.html" data-i18n="contact">اتصل بنا</a>
+        <a href="./privacy.html" data-i18n="privacy">الخصوصية</a>
+      </nav>
+      <div class="header-actions">
+        <a class="social-link youtube" data-social="youtube" target="_blank" rel="noopener noreferrer" href="#" aria-label="YouTube"><span class="social-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg></span><span>YouTube</span></a>
+        <a class="social-link discord" data-social="discord" target="_blank" rel="noopener noreferrer" href="#" aria-label="Discord"><span class="social-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.7 5.3A18 18 0 0 0 15.3 4l-.6 1.2a16 16 0 0 0-5.4 0L8.7 4a18 18 0 0 0-4.4 1.3C1.5 9.5.7 13.6 1.1 17.7a18 18 0 0 0 5.4 2.7l1.2-2a11 11 0 0 1-1.9-.9l.5-.4a12.8 12.8 0 0 0 11.4 0l.5.4a11 11 0 0 1-1.9.9l1.2 2a18 18 0 0 0 5.4-2.7c.5-4.7-.8-8.8-3.2-12.4ZM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg></span><span>Discord</span></a>
+        <button id="open-preferences" class="language-toggle preferences-toggle" type="button" aria-label="Settings" data-i18n-title="preferencesTitle"><span aria-hidden="true">⚙</span><span data-i18n="preferencesShort">الإعدادات</span></button>
+        <button class="language-toggle" type="button" data-language-toggle aria-label="Change language">EN</button>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span><span data-i18n="heroEyebrow">50 تحدياً بانتظارك</span></p>
+          <h1 data-i18n="heroTitle">جاهز تكسر <em>رقمك القياسي؟</em></h1>
+          <p class="hero-description" data-i18n="heroDescription">اختبر سرعتك وذاكرتك وتركيزك. اختر لعبة، العب جولة، وتقدّمك محفوظ تلقائياً.</p>
+          <a class="hero-cta" href="#games"><span data-i18n="browseGames">اكتشف الألعاب</span><span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-cube">✦</div><span class="float-token token-one">+10</span><span class="float-token token-two">★</span><span class="float-token token-three">▶</span></div>
+      </section>
+      <div class="ad-slot ad-slot-top" aria-label="Advertisement placeholder"><span class="ad-label" data-i18n="adLabel">مساحة إعلانية</span><span data-i18n="adPlaceholder">سيظهر الإعلان هنا عند الربط — مساحة مؤقتة</span></div>
+      <div class="content-layout" id="games">
+        <section class="main-content">
+          <section class="library-section" aria-labelledby="library-title">
+            <div class="section-heading"><div><p class="eyebrow" data-i18n="chooseChallenge">اختر تحدّيك</p><h2 id="library-title" data-i18n="gameLibrary">مكتبة الألعاب</h2></div><span class="game-count"><b id="game-count">50</b> <span data-i18n="gameCountLabel">لعبة</span></span></div>
+            <div class="filters">
+              <label class="search-box"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg><input id="game-search" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="ابحث عن لعبة..." autocomplete="off"><kbd>/</kbd></label>
+              <div id="category-filters" class="category-filters" aria-label="Game categories"></div>
+            </div>
+            <div id="game-grid" class="game-grid" aria-live="polite"></div>
+            <p id="empty-results" class="empty-state" hidden data-i18n="noGames">لم نعثر على ألعاب مطابقة. جرّب بحثاً آخر.</p>
+          </section>
+          <section id="game-panel" class="game-panel" hidden aria-live="polite">
+            <div class="game-panel-heading"><div><p class="eyebrow" id="game-category"></p><h2 id="current-game-title"></h2><p id="current-game-description" class="panel-description"></p></div><button id="close-game" class="icon-button" type="button" data-i18n-aria="closeGame" aria-label="إغلاق اللعبة">×</button></div>
+            <div class="stats-row" id="game-stats"></div>
+            <div id="game-stage" class="game-stage"></div>
+            <div class="game-actions"><button id="reward-button" class="button button-reward" type="button"><span aria-hidden="true" data-icon-slot="reward">✦</span><span data-i18n="rewardButton">نقاط وحياة مقابل إعلان</span></button><button id="reset-game" class="button button-quiet" type="button" data-i18n="resetGame">إعادة الجولة</button></div>
+            <p class="save-note"><span aria-hidden="true">✓</span> <span data-i18n="autosave">يُحفظ تقدمك تلقائياً على هذا الجهاز.</span></p>
+          </section>
+        </section>
+        <aside class="ad-rail" aria-label="Advertisement placeholder"><div class="ad-slot ad-slot-rail"><span class="ad-label" data-i18n="adLabel">مساحة إعلانية</span><span class="ad-icon" aria-hidden="true">▧</span><strong data-i18n="adHere">إعلانك هنا</strong><span data-i18n="adPlaceholder">سيظهر الإعلان هنا عند الربط — مساحة مؤقتة</span><small data-i18n="adNote">يمكن استبدال هذا المربع بكود شبكة الإعلانات لاحقاً.</small></div></aside>
+      </div>
+    </main>
+    <footer class="footer">
+      <a class="brand brand-footer" href="./index.html"><img src="./games.png" alt="" width="32" height="32" data-icon-slot="brand"><strong>GAME HUB</strong></a>
+      <p data-i18n="footerNote">العب بذكاء. خذ استراحة. عدّ وحطّم رقمك.</p>
+      <div class="footer-links"><a href="./about.html" data-i18n="about">من نحن</a><a href="./contact.html" data-i18n="contact">اتصل بنا</a><a href="./privacy.html" data-i18n="privacy">الخصوصية</a><a href="./language.html" data-i18n="languagePage">اللغة</a></div>
+      <p class="attribution"><span data-i18n="iconCredit">إسناد الأيقونة:</span> <a href="https://www.flaticon.com/free-icons/pixelated" title="pixelated icons" target="_blank" rel="noopener noreferrer">Pixelated icons created by Miguel C Balandrano - Flaticon</a></p>
+    </footer>
+  </div>
+  <dialog id="reward-dialog" class="reward-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="icon-button" aria-label="Close">×</button></form>
+    <span class="dialog-sparkle" aria-hidden="true">✦</span><p class="eyebrow" data-i18n="rewardDemo">مكافأة تجريبية</p><h2 data-i18n="rewardTitle">خذ دفعة إضافية!</h2><p data-i18n="rewardDescription">هذه مساحة إعلان تجريبية. عند ربط شبكة إعلانات، سيظهر الإعلان هنا.</p>
+    <div class="ad-slot ad-slot-modal"><span class="ad-label" data-i18n="adLabel">مساحة إعلانية</span><span data-i18n="adPlaceholder">سيظهر الإعلان هنا عند الربط — مساحة مؤقتة</span></div>
+    <button id="claim-reward" class="button button-primary" type="button" data-i18n="claimReward">تأكيد المكافأة التجريبية</button><small data-i18n="rewardDisclaimer">هذا نموذج تجريبي ولا يشغّل إعلاناً فعلياً.</small>
+  </dialog>
+  <dialog id="tutorial-dialog" class="site-dialog tutorial-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="icon-button" type="submit" data-i18n-aria="close" aria-label="إغلاق">×</button></form>
+    <span class="dialog-sparkle" aria-hidden="true">✦</span>
+    <p class="eyebrow" data-i18n="tutorialEyebrow">دليل سريع</p>
+    <h2 data-i18n="tutorialTitle">أهلاً بك في Game Hub!</h2>
+    <p class="tutorial-intro" data-i18n="tutorialIntro">كل لعبة لها تحدّيها الخاص. اتبع الخطوات وابدأ اللعب بطريقتك.</p>
+    <ol class="tutorial-steps">
+      <li><span>01</span><div><strong data-i18n="tutorialStepOneTitle">اختر لعبة</strong><p data-i18n="tutorialStepOne">استخدم البحث أو التصنيفات، ثم اضغط بطاقة اللعبة لفتحها.</p></div></li>
+      <li><span>02</span><div><strong data-i18n="tutorialStepTwoTitle">العب واكسب</strong><p data-i18n="tutorialStepTwo">اقرأ التعليمات داخل اللعبة؛ اجمع النقاط وحافظ على حيواتك.</p></div></li>
+      <li><span>03</span><div><strong data-i18n="tutorialStepThreeTitle">تقدّمك محفوظ</strong><p data-i18n="tutorialStepThree">نتائج كل لعبة تُحفظ على جهازك. غيّر الصوت والحركة من الإعدادات.</p></div></li>
+    </ol>
+    <div class="tutorial-actions">
+      <button id="skip-tutorial" class="button button-quiet" type="button" data-i18n="skipTutorial">تخطي الدليل</button>
+      <button id="finish-tutorial" class="button button-primary" type="button" data-i18n="startPlaying">ابدأ اللعب</button>
+    </div>
+  </dialog>
+  <dialog id="preferences-dialog" class="site-dialog preferences-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="icon-button" type="submit" data-i18n-aria="close" aria-label="إغلاق">×</button></form>
+    <p class="eyebrow" data-i18n="preferencesEyebrow">خصّص تجربتك</p>
+    <h2 data-i18n="preferencesTitle">تفضيلات اللعب</h2>
+    <p class="preferences-intro" data-i18n="preferencesIntro">تُحفظ هذه الخيارات على جهازك.</p>
+    <label class="preference-row"><span><strong data-i18n="browserReminderTitle">تذكيرات المتصفح</strong><small data-i18n="browserReminderDescription">اسمح بإشعار واحد للعودة إذا بقي الموقع مفتوحاً في تبويب بالخلفية.</small></span><input id="preference-browser-reminders" type="checkbox"></label>
+    <small class="browser-reminder-hint" data-i18n="browserReminderLimit">التذكيرات اختيارية، وتحتاج إذنك. لا يمكن إرسالها بعد إغلاق الموقع دون خدمة إشعارات خادمية.</small>
+    <label class="preference-row"><span><strong data-i18n="soundPreference">المؤثرات الصوتية</strong><small data-i18n="soundPreferenceHint">أصوات ناعمة للنقر والنجاح وخسارة الحياة.</small></span><input id="preference-sound" type="checkbox"></label>
+    <label class="preference-control"><span data-i18n="soundVariation">تنويعة المؤثر الصوتي (1–128)</span><input id="preference-sound-variation" type="range" min="1" max="128" step="1"><output id="sound-variation-value"></output></label>
+    <label class="preference-control"><span data-i18n="soundVolume">مستوى الصوت</span><input id="preference-sound-volume" type="range" min="0" max="100" step="1"><output id="sound-volume-value"></output></label>
+    <label class="preference-row"><span><strong data-i18n="animationPreference">الحركات والمؤثرات</strong><small data-i18n="animationPreferenceHint">حركة البطاقات وتلاشي القلوب أثناء اللعب.</small></span><input id="preference-animations" type="checkbox"></label>
+    <label class="preference-control"><span data-i18n="animationVariation">نمط الحركة (1–500)</span><input id="preference-animation-variation" type="range" min="1" max="500" step="1"><output id="animation-variation-value"></output></label>
+    <label class="preference-row"><span><strong data-i18n="eyeComfort">وضع راحة العينين</strong><small data-i18n="eyeComfortHint">ألوان دافئة وتباين مريح للقراءة الطويلة.</small></span><input id="preference-eye-comfort" type="checkbox"></label>
+    <label class="preference-control"><span data-i18n="appearanceTheme">مظهر الموقع</span><select id="preference-theme"><option value="dark" data-i18n="themeDark">داكن</option><option value="light" data-i18n="themeLight">فاتح</option></select></label>
+    <label class="preference-control"><span data-i18n="accentColor">اللون الرئيسي</span><input id="preference-accent-color" type="color" value="#76f0c4"></label>
+    <div class="game-actions"><a class="button button-quiet" href="./appearance.html" data-i18n="appearanceWizardLink">تخصيص كل الألوان</a><a class="button button-quiet" href="./hdr.html" data-i18n="hdrPageLink">تجربة HDR</a></div>
+    <label class="preference-row"><span><strong data-i18n="tutorialPreference">الدليل عند الزيارة</strong><small data-i18n="tutorialPreferenceHint">اعرض الدليل تلقائياً في الزيارة القادمة.</small></span><input id="preference-tutorial" type="checkbox"></label>
+    <label class="preference-control"><span data-i18n="customIconFor">تخصيص أيقونة</span><select id="custom-icon-slot"><option value="brand" data-i18n="iconBrand">شعار الموقع</option><option value="life" data-i18n="iconLife">الحياة</option><option value="reward" data-i18n="iconReward">المكافأة</option></select></label>
+    <label class="preference-control icon-upload-control"><span data-i18n="uploadIcon">اختر صورة للأيقونة (PNG/JPG/WEBP)</span><input id="custom-icon-file" type="file" accept="image/png,image/jpeg,image/webp"><button id="clear-custom-icon" class="button button-quiet" type="button" data-i18n="clearIcon">إزالة الأيقونة</button></label>
+    <div class="preferences-actions"><button id="replay-tutorial" class="button button-quiet" type="button" data-i18n="replayTutorial">عرض الدليل الآن</button><button id="close-preferences" class="button button-primary" type="button" data-i18n="savePreferences">حفظ وإغلاق</button></div>
+    <p id="preferences-saved" class="preferences-saved" role="status" hidden data-i18n="preferencesSaved">تم حفظ تفضيلاتك.</p>
+  </dialog>
+  <div id="site-toast" class="site-toast" role="status" aria-live="polite" hidden></div>
+  <script src="./js/storage.js"></script><script src="./js/i18n.js"></script><script src="./js/games.js"></script><script src="./js/site.js"></script><script src="./code.js"></script>
+</body>
+</html>

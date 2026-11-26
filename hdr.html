@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="تجربة عرض Game Hub بخلفية سوداء وإضاءة HDR تجريبية.">
+  <meta property="og:title" content="تجربة HDR — Game Hub">
+  <meta property="og:description" content="تجربة عرض Game Hub بخلفية سوداء وإضاءة قابلة للتعديل.">
+  <meta property="og:type" content="website">
+  <title>تجربة HDR — Game Hub</title>
+  <link rel="icon" href="./games.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="hdr-page">
+  <main class="hdr-stage">
+    <img id="hdr-logo" class="hdr-logo" src="./games.png" alt="Game Hub" data-icon-slot="brand">
+    <h1 data-i18n="hdrTitle">غرفة HDR</h1>
+    <p data-i18n="hdrDescription">خلفية سوداء وإضاءة قابلة للتعديل. التأثير محاكاة CSS؛ يعتمد HDR الحقيقي على الشاشة ونظام التشغيل.</p>
+    <section class="hdr-controls" aria-label="HDR controls">
+      <label><span data-i18n="hdrOpacity">وضوح الأيقونة</span><input id="hdr-opacity" type="range" min="0.01" max="0.12" step="0.005" value="0.035"></label>
+      <label><span data-i18n="hdrIntensity">شدة الإضاءة</span><input id="hdr-intensity" type="range" min="1" max="6" step="0.1" value="3.2"></label>
+      <small data-i18n="hdrCaution">قد تبقى الأيقونة شبه غير مرئية حتى ترفع الوضوح. التغيير محفوظ محلياً.</small>
+    </section>
+    <div class="hdr-actions">
+      <button id="hdr-toggle" class="button button-primary" type="button" data-i18n="hdrToggle">تشغيل تأثير HDR</button>
+      <button id="hdr-save" class="button button-quiet" type="button" data-i18n="hdrSave">حفظ وتحديث التجربة</button>
+      <button id="hdr-fullscreen" class="button button-quiet" type="button" data-i18n="hdrFullscreen">ملء الشاشة</button>
+      <a class="button button-quiet" href="./index.html" data-i18n="home">الرئيسية</a>
+    </div>
+    <p id="hdr-status" role="status" aria-live="polite"></p>
+  </main>
+  <script src="./js/storage.js"></script>
+  <script src="./js/i18n.js"></script>
+  <script src="./js/site.js"></script>
+  <script src="./js/hdr.js"></script>
+</body>
+</html>
