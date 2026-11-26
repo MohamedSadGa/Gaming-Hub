@@ -19,16 +19,14 @@
   <style>
     .ad-slot-top,
     .ad-slot-rail {
-      transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-                  filter 0.38s ease;
+      transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  filter 0.35s ease;
       will-change: opacity, transform;
     }
 
     .ad-slot-top {
       width: 100%;
-      position: sticky;
-      top: 10px;
       z-index: 20;
     }
 
@@ -42,8 +40,6 @@
     }
 
     .ad-slot-rail {
-      position: sticky;
-      top: 16px;
       min-height: 520px;
       display: flex;
       flex-direction: column;
@@ -62,6 +58,23 @@
     @media (min-width: 900px) {
       .ad-slot-rail iframe {
         min-height: 500px !important;
+      }
+
+      /* تثبيت ونزول مع السكرول فعلياً */
+      body.scroll-ads .ad-slot-top.is-floating {
+        position: fixed;
+        top: 10px;
+        left: var(--ad-top-left, 0px);
+        width: var(--ad-top-width, 100%);
+        z-index: 40;
+      }
+
+      body.scroll-ads .ad-slot-rail.is-floating {
+        position: fixed;
+        top: 16px;
+        left: var(--ad-rail-left, auto);
+        width: var(--ad-rail-width, 280px);
+        z-index: 35;
       }
     }
 
@@ -216,32 +229,128 @@
       const panel = document.getElementById('game-panel');
       const grid = document.getElementById('game-grid');
       const closeBtn = document.getElementById('close-game');
+      const topAd = document.querySelector('.ad-slot-top');
+      const railAd = document.querySelector('.ad-slot-rail');
 
-      function syncGameState() {
-        const isOpen = panel && !panel.hasAttribute('hidden');
-        document.body.classList.toggle('in-game', Boolean(isOpen));
+      let topPlaceholder = null;
+      let railPlaceholder = null;
+      let topTriggerY = null;
+      let railTriggerY = null;
+
+      function ensurePlaceholders() {
+        if (topAd && !topPlaceholder) {
+          topPlaceholder = document.createElement('div');
+          topPlaceholder.className = 'ad-top-spacer';
+          topPlaceholder.style.display = 'none';
+          topAd.parentNode.insertBefore(topPlaceholder, topAd.nextSibling);
+        }
+        if (railAd && !railPlaceholder) {
+          railPlaceholder = document.createElement('div');
+          railPlaceholder.className = 'ad-rail-spacer';
+          railPlaceholder.style.display = 'none';
+          railAd.parentNode.insertBefore(railPlaceholder, railAd.nextSibling);
+        }
+      }
+
+      function measurePositions() {
+        ensurePlaceholders();
+        if (window.innerWidth < 900) return;
+
+        if (topAd && !topAd.classList.contains('is-floating')) {
+          const rect = topAd.getBoundingClientRect();
+          topTriggerY = rect.top + window.scrollY - 10;
+          document.body.style.setProperty('--ad-top-left', `${rect.left}px`);
+          document.body.style.setProperty('--ad-top-width', `${rect.width}px`);
+          if (topPlaceholder) topPlaceholder.style.height = `${rect.height}px`;
+        }
+
+        if (railAd && !railAd.classList.contains('is-floating')) {
+          const rect = railAd.getBoundingClientRect();
+          railTriggerY = rect.top + window.scrollY - 16;
+          document.body.style.setProperty('--ad-rail-left', `${rect.left}px`);
+          document.body.style.setProperty('--ad-rail-width', `${rect.width}px`);
+          if (railPlaceholder) railPlaceholder.style.height = `${rect.height}px`;
+        }
+      }
+
+      function updateScrollAds() {
+        const isDesktop = window.innerWidth >= 900;
+        const isGameOpen = panel && !panel.hasAttribute('hidden');
+        document.body.classList.toggle('in-game', Boolean(isGameOpen));
+
+        if (!isDesktop || isGameOpen) {
+          document.body.classList.remove('scroll-ads');
+          if (topAd) topAd.classList.remove('is-floating');
+          if (railAd) railAd.classList.remove('is-floating');
+          if (topPlaceholder) topPlaceholder.style.display = 'none';
+          if (railPlaceholder) railPlaceholder.style.display = 'none';
+          return;
+        }
+
+        if (topTriggerY === null || railTriggerY === null) {
+          measurePositions();
+        }
+
+        const y = window.scrollY;
+        const floatTop = topTriggerY !== null && y >= topTriggerY;
+        const floatRail = railTriggerY !== null && y >= railTriggerY;
+
+        document.body.classList.toggle('scroll-ads', floatTop || floatRail);
+
+        if (topAd && topPlaceholder) {
+          topAd.classList.toggle('is-floating', floatTop);
+          topPlaceholder.style.display = floatTop ? 'block' : 'none';
+        }
+
+        if (railAd && railPlaceholder) {
+          railAd.classList.toggle('is-floating', floatRail);
+          railPlaceholder.style.display = floatRail ? 'block' : 'none';
+        }
       }
 
       if (panel) {
-        new MutationObserver(syncGameState).observe(panel, {
+        new MutationObserver(updateScrollAds).observe(panel, {
           attributes: true,
           attributeFilter: ['hidden', 'class', 'style']
         });
       }
 
       if (grid) {
-        grid.addEventListener('click', () => {
-          setTimeout(syncGameState, 40);
-        });
+        grid.addEventListener('click', () => setTimeout(updateScrollAds, 50));
       }
 
       if (closeBtn) {
         closeBtn.addEventListener('click', () => {
-          setTimeout(syncGameState, 40);
+          setTimeout(() => {
+            topTriggerY = null;
+            railTriggerY = null;
+            measurePositions();
+            updateScrollAds();
+          }, 50);
         });
       }
 
-      syncGameState();
+      window.addEventListener('scroll', updateScrollAds, { passive: true });
+      window.addEventListener('resize', () => {
+        topTriggerY = null;
+        railTriggerY = null;
+        if (topAd) topAd.classList.remove('is-floating');
+        if (railAd) railAd.classList.remove('is-floating');
+        if (topPlaceholder) topPlaceholder.style.display = 'none';
+        if (railPlaceholder) railPlaceholder.style.display = 'none';
+        measurePositions();
+        updateScrollAds();
+      });
+
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          measurePositions();
+          updateScrollAds();
+        }, 300);
+      });
+
+      measurePositions();
+      updateScrollAds();
     })();
   </script>
 </body>
