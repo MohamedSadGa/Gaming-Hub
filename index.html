@@ -16,6 +16,75 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Press+Start+2P&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
+  <style>
+    .ad-slot-top,
+    .ad-slot-rail {
+      transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                  filter 0.38s ease;
+      will-change: opacity, transform;
+    }
+
+    .ad-slot-top {
+      width: 100%;
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+    }
+
+    .ad-slot-top > div,
+    .ad-slot-top iframe {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: 120px;
+      display: block;
+      margin: auto;
+    }
+
+    .ad-slot-rail {
+      position: sticky;
+      top: 16px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      z-index: 15;
+    }
+
+    .ad-slot-rail > div,
+    .ad-slot-rail iframe {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 auto;
+      display: block;
+      margin: auto;
+    }
+
+    @media (min-width: 900px) {
+      .ad-slot-rail iframe {
+        min-height: 500px !important;
+      }
+    }
+
+    /* إخفاء ناعم ومريح عند الدخول إلى أي لعبة */
+    body.in-game .ad-slot-top,
+    body.in-game .ad-slot-rail,
+    body:has(#game-panel:not([hidden])) .ad-slot-top,
+    body:has(#game-panel:not([hidden])) .ad-slot-rail {
+      opacity: 0;
+      transform: translateY(-12px) scale(0.97);
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ad-slot-top,
+      .ad-slot-rail {
+        transition: opacity 0.2s ease;
+        transform: none !important;
+        filter: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="page-shell">
@@ -52,7 +121,7 @@
         <div id="frame" style="width: 100%; margin: auto; position: relative; z-index: 1;">
           <iframe data-aa="2463378" src="https://acceptable.a-ads.com/2463378/?size=Adaptive"
                   title="Advertisement"
-                  style="border: 0; padding: 0; width: 70%; height: auto; overflow: hidden; display: block; margin: auto;"></iframe>
+                  style="border: 0; padding: 0; width: 100%; height: auto; overflow: hidden; display: block; margin: auto;"></iframe>
         </div>
         <!-- END AADS AD UNIT 2463378 -->
       </div>
@@ -142,5 +211,38 @@
   </dialog>
   <div id="site-toast" class="site-toast" role="status" aria-live="polite" hidden></div>
   <script src="./js/storage.js"></script><script src="./js/i18n.js"></script><script src="./js/games.js"></script><script src="./js/site.js"></script><script src="./code.js"></script>
+  <script>
+    (function () {
+      const panel = document.getElementById('game-panel');
+      const grid = document.getElementById('game-grid');
+      const closeBtn = document.getElementById('close-game');
+
+      function syncGameState() {
+        const isOpen = panel && !panel.hasAttribute('hidden');
+        document.body.classList.toggle('in-game', Boolean(isOpen));
+      }
+
+      if (panel) {
+        new MutationObserver(syncGameState).observe(panel, {
+          attributes: true,
+          attributeFilter: ['hidden', 'class', 'style']
+        });
+      }
+
+      if (grid) {
+        grid.addEventListener('click', () => {
+          setTimeout(syncGameState, 40);
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          setTimeout(syncGameState, 40);
+        });
+      }
+
+      syncGameState();
+    })();
+  </script>
 </body>
 </html>
